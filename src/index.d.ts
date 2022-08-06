@@ -6,7 +6,7 @@ interface Parsed {
 }
 
 declare class mcArgs {
-    public constructor(argv: str[]);
+    public constructor(argv: string[]);
     public add_single(name: string, trigger: string): void
     public add_double(name: string, trigger: string): void
     public parse(): {
