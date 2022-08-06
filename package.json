@@ -1,0 +1,11 @@
+{
+  "name": "@mcorange9/mcargs",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "author": "MCorange",
+  "license": "GNU-3.0",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/MCorange99/mcArgs"
+  }
+}
