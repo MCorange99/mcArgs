@@ -1,5 +1,5 @@
 
-module.exports = class McArgs {
+module.exports = class mcArgs {
     constructor(argv){
         this.argv = argv
         this.argc = argv.length
