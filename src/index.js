@@ -5,8 +5,10 @@ module.exports = class mcArgs {
         this.argc = argv.length
         this.SINGLE = "TYPE_SINGLE"
         this.DOUBLE = "TYPE_DOUBLE"
+        this.PREFIXLESS = "TYPE_PREFIXLESS"
         this.bool_args = {}
         this.str_args = {}
+        this.prefixless_args = []
         this.parsed = {}
     }
 
@@ -35,6 +37,20 @@ module.exports = class mcArgs {
         }
     }
 
+    add_prefixless(name, position){
+        this.prefixless_args.push({
+            name: name,
+            pos: position
+        })
+        this.parsed[name] = {
+            name: name,
+            trigger: null,
+            type: this.PREFIXLESS,
+            value: "",
+            pos: position
+        }
+    }
+
     parse(){
         this.parsed["_node_path"] = {
             name: "_node_path",
@@ -50,9 +66,15 @@ module.exports = class mcArgs {
             value: this.argv.shift()
         }
 
+
+
         let i = 0
         for (i in this.argv){
-
+            if (!this.argv[i].startsWith("-")){
+                let idk = this.prefixless_args.shift()
+                console.log(idk)
+                this.parsed[idk.name].value = this.argv[i].toString()
+            }
             // test for bool args
             for (const def_bool of Object.entries(this.bool_args)){
                 const name = def_bool[0];
