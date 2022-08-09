@@ -71,9 +71,12 @@ module.exports = class mcArgs {
         let i = 0
         for (i in this.argv){
             if (!this.argv[i].startsWith("-")){
-                let idk = this.prefixless_args.shift()
-                console.log(idk)
-                this.parsed[idk.name].value = this.argv[i].toString()
+                if (this.prefixless_args.length > 0){
+                    let idk = this.prefixless_args.shift()
+                    // console.log(idk)
+                    this.parsed[idk.name].value = this.argv[i].toString()
+                }
+                
             }
             // test for bool args
             for (const def_bool of Object.entries(this.bool_args)){
